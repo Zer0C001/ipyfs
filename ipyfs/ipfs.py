@@ -37,7 +37,7 @@ class IPFS:
 
 
     @staticmethod
-    def _response(response: requests.Response,response_return_status_code=False) -> dict:
+    def _response(response: requests.Response,response_return_status_code=True) -> dict:
         try:
             result = response.json()
         except:
