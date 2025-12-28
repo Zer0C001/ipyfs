@@ -3,9 +3,9 @@ from ipyfs.ipfs import IPFS
 
 class Config(IPFS):
 
-    def __init__(self):
-        super(Config, self).__init__()
-        self.profile = self.Profile()
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.profile = self.Profile(**kwargs)
 
     def __call__(
         self,
@@ -34,8 +34,8 @@ class Config(IPFS):
 
     class Profile(IPFS):
 
-        def __init__(self):
-            super(Config.Profile, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def apply(
             self,

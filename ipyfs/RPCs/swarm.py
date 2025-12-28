@@ -3,11 +3,11 @@ from ipyfs.ipfs import IPFS
 
 class Swarm(IPFS):
 
-    def __init__(self):
-        super(Swarm, self).__init__()
-        self.addrs = self.Addrs()
-        self.filters = self.Filters()
-        self.peering = self.Peering()
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.addrs = self.Addrs(**kwargs)
+        self.filters = self.Filters(**kwargs)
+        self.peering = self.Peering(**kwargs)
 
     def connect(
         self,
@@ -61,8 +61,8 @@ class Swarm(IPFS):
 
     class Addrs(IPFS):
 
-        def __init__(self):
-            super(Swarm.Addrs, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def __call__(self) -> dict:
             """
@@ -93,8 +93,8 @@ class Swarm(IPFS):
 
     class Filters(IPFS):
 
-        def __init__(self):
-            super(Swarm.Filters, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def add(
             self,
@@ -130,8 +130,8 @@ class Swarm(IPFS):
 
     class Peering(IPFS):
 
-        def __init__(self):
-            super(Swarm.Peering, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def add(
             self,

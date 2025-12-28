@@ -3,14 +3,14 @@ from ipyfs.ipfs import IPFS
 
 class Diag(IPFS):
 
-    def __init__(self):
-        super(Diag, self).__init__()
-        self.cmds = self.Cmds()
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.cmds = self.Cmds(**kwargs)
 
     class Cmds(IPFS):
 
-        def __init__(self):
-            super(Diag.Cmds, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def __call__(
             self,

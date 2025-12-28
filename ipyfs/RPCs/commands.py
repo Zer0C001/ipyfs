@@ -3,9 +3,9 @@ from ipyfs.ipfs import IPFS
 
 class Commands(IPFS):
 
-    def __init__(self):
-        super(Commands, self).__init__()
-        self.completion = self.Completion()
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.completion = self.Completion(**kwargs)
 
     def __call__(
         self,
@@ -21,8 +21,8 @@ class Commands(IPFS):
 
     class Completion(IPFS):
 
-        def __init__(self):
-            super(Commands.Completion, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def bash(self) -> dict:
             """
