@@ -29,6 +29,7 @@ class IPFS:
             from . import RPCs
             if type(init_self_attr_RPCs) is list:
                 rpc_objects=[ obj.capitalize() for obj in init_self_attr_RPCs if obj.capitalize() in dir(RPCs) and type(getattr(RPCs,obj.capitalize())) is type ]
+                rpc_objects+=[ obj.upper() for obj in init_self_attr_RPCs if obj.upper() in dir(RPCs) and type(getattr(RPCs,obj.upper())) is type ]
             else:
               rpc_objects=[ obj for obj in dir(RPCs) if type(getattr(RPCs,obj)) is type ]
             for rpc_object in rpc_objects:
