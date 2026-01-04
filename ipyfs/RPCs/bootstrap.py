@@ -3,10 +3,10 @@ from ipyfs.ipfs import IPFS
 
 class BootStrap(IPFS):
 
-    def __init__(self):
-        super(BootStrap, self).__init__()
-        self.add = self.Add()
-        self.rm = self.Rm()
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.add = self.Add(**kwargs)
+        self.rm = self.Rm(**kwargs)
 
     def __call__(self) -> dict:
         """
@@ -18,8 +18,8 @@ class BootStrap(IPFS):
 
     class Add(IPFS):
 
-        def __init__(self):
-            super(BootStrap.Add, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def __call__(
             self,
@@ -49,8 +49,8 @@ class BootStrap(IPFS):
 
     class Rm(IPFS):
 
-        def __init__(self):
-            super(BootStrap.Rm, self).__init__()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
 
         def __call__(
             self,

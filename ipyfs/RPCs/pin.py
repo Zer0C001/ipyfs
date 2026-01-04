@@ -3,15 +3,16 @@ from ipyfs.ipfs import IPFS
 
 class Pin(IPFS):
 
-    def __init__(self):
-        super(Pin, self).__init__()
-        self.remote = self.Remote()
+    def __init__(self,**kwargs):
+        super().__init__(**kwargs)
+        self.remote = self.Remote(**kwargs)
 
     def add(
         self,
         path: str,
         recursive: bool = None,
-        progress: bool = None
+        progress: bool = None,
+        name: str = None
     ) -> dict:
         """
         Pin objects to local storage.
@@ -19,6 +20,7 @@ class Pin(IPFS):
         :param path: Path to object(s) to be pinned. Required: yes.
         :param recursive: Recursively pin the object linked to by the specified object(s). Default: true. Required: no.
         :param progress: Show progress. Required: no.
+        :param name: An optional name for created pin(s). Required: no.
         :return response: Response from IPFS.
         """
         replace = {"path": "arg"}
@@ -32,7 +34,9 @@ class Pin(IPFS):
         path: str = None,
         type: str = None,
         quiet: bool = None,
-        stream: bool = None
+        stream: bool = None,
+        name: str = None,
+        names: bool = None
     ) -> dict:
         """
         List objects pinned to local storage.
@@ -41,6 +45,8 @@ class Pin(IPFS):
         :param type: The type of pinned keys to list. Can be "direct", "indirect", "recursive", or "all". Default: all. Required: no.
         :param quiet: Write just hashes of objects. Required: no.
         :param stream: Enable streaming of pins as they are discovered. Required: no.
+        :param name: Limit returned pins to ones with names that contain the value provided (case-sensitive, partial match). Implies --names=true. Required: no.
+        :param names: Include pin names in the output (slower, disabled by default). Required: no.
         :return response: Response from IPFS.
         """
         replace = {"path": "arg"}
@@ -106,9 +112,9 @@ class Pin(IPFS):
 
     class Remote(IPFS):
 
-        def __init__(self):
-            super(Pin.Remote).__init__()
-            self.service = self.Service()
+        def __init__(self,**kwargs):
+            super().__init__(**kwargs)
+            self.service = self.Service(**kwargs)
 
         def add(
             self,
@@ -172,8 +178,8 @@ class Pin(IPFS):
 
         class Service(IPFS):
 
-            def __init__(self):
-                super(Pin.Remote.Service).__init__()
+            def __init__(self,**kwargs):
+                super().__init__(**kwargs)
 
             def add(
                 self,
