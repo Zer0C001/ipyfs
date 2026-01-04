@@ -35,7 +35,7 @@ class IPFS:
             else:
               rpc_objects=[ obj for obj in dir(RPCs) if type(getattr(RPCs,obj)) is type ]
             for rpc_object in rpc_objects:
-                setattr(self,rpc_object.lower(),getattr(RPCs,rpc_object)(host=host,port=port,version=version,response_return_status_code=response_return_status_code))
+                setattr(self,rpc_object.lower(),getattr(RPCs,rpc_object)(host=host,port=port,version=version,response_return_status_code=response_return_status_code,requests_kwargs=requests_kwargs))
 
 
 
