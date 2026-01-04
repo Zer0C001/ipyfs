@@ -8,11 +8,13 @@ class IPFS:
         self,
         host: str = "http://localhost",
         port: int = 5001,
-        version: int = 0
+        version: int = 0,
+        requests_kwargs={}
     ):
         self.host = host
         self.port = port
         self.version = version
+        self.requests_kwargs=requests_kwargs
         self.uri = (
             f"{self.host}:{self.port}"
             f"/api/v{self.version}"
@@ -70,6 +72,7 @@ class IPFS:
             requests.post(
                 url=uri,
                 params=data,
-                files={'file': file}
+                files={'file': file},
+                **self.requests_kwargs
             )
         )
